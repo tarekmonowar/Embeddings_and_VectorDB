@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "create": "node index.js",
-    "search": "node search.js",
-    "searchHuman": "node searchResultWithOpenAi.js",
-    "langChainSplitter": "node langChainRecursiveSplitter.js"
+    "create": "tsx index.ts",
+    "search": "tsx search.ts",
+    "searchHuman": "tsx searchResultWithOpenAi.ts",
+    "langChainSplitter": "tsx langChainRecursiveSplitter.ts"
   },
   "dependencies": {
     "@langchain/community": "^1.1.27",
@@ -17,5 +17,9 @@
     "dotenv": "^16.4.5",
     "langchain": "^1.3.4",
     "openai": "^4.104.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
   }
 }

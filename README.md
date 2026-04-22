@@ -38,7 +38,8 @@ A hands-on Node.js project exploring **OpenAI Embeddings**, **Vector Databases**
 
 | Technology | Purpose |
 |---|---|
-| **Node.js** | Runtime environment |
+| **Node.js / TypeScript** | Runtime environment & language |
+| **tsx** | TypeScript execution engine (no build step) |
 | **OpenAI API** | Generating embeddings & chat completions |
 | **Supabase** | Hosted PostgreSQL with pgvector extension |
 | **pgvector** | PostgreSQL extension for vector similarity search |
@@ -50,15 +51,16 @@ A hands-on Node.js project exploring **OpenAI Embeddings**, **Vector Databases**
 ## Project Structure
 
 ```
-├── config.js                      # OpenAI & Supabase client configuration
-├── content.js                     # Sample text data (fake podcast descriptions)
-├── index.js                       # Generate embeddings & store in Supabase
-├── search.js                      # Semantic similarity search via vector matching
-├── searchResultWithOpenAi.js      # RAG — search + OpenAI chat completion
-├── langChainRecursiveSplitter.js  # Split long documents into chunks & embed
+├── config.ts                      # OpenAI & Supabase client configuration
+├── content.ts                     # Sample text data (fake podcast descriptions)
+├── index.ts                       # Generate embeddings & store in Supabase
+├── search.ts                      # Semantic similarity search via vector matching
+├── searchResultWithOpenAi.ts      # RAG — search + OpenAI chat completion
+├── langChainRecursiveSplitter.ts  # Split long documents into chunks & embed
 ├── longContent.txt                # Sample long-form content for chunking
 ├── documents.sql                  # SQL schema for the vector embedding table
 ├── rpcFunction.sql                # SQL function for cosine similarity search
+├── tsconfig.json                  # TypeScript configuration
 ├── package.json                   # Dependencies and npm scripts
 ├── .env                           # Environment variables (not committed)
 └── .gitignore                     # Git ignore rules
