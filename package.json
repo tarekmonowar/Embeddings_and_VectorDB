@@ -3,9 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "create": "node index.js",
+    "search": "node search.js",
+    "searchHuman": "node searchResultWithOpenAi.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.104.0",
     "dotenv": "^16.4.5",
     "openai": "^4.104.0"
   }

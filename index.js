@@ -1,28 +1,25 @@
-import openai from "./config.js";
-
-/** Create embeddings representing the input text */
-const content = [
-  "Beyond Mars: speculating life on distant planets.",
-  "Jazz under stars: a night in New Orleans' music scene.",
-  "Mysteries of the deep: exploring uncharted ocean caves.",
-  "Rediscovering lost melodies: the rebirth of vinyl culture.",
-  "Tales from the tech frontier: decoding AI ethics.",
-];
+import { openai, supabase } from "./config.js";
+import { content } from "./content.js";
 
 async function main(input) {
-  await Promise.all(
+  const data = await Promise.all(
     input.map(async (textChunk) => {
       const embeddingResponse = await openai.embeddings.create({
         model: process.env.AI_MODEL,
         input: textChunk,
+        dimensions: 1536, //ai model default embedding size 3072
       });
-      const data = {
+      return {
         content: textChunk,
         embedding: embeddingResponse.data[0].embedding,
       };
-      console.log(data);
     }),
   );
-  console.log("Embedding complete!");
+  const { error } = await supabase.from("vecto_embedding").insert(data);
+  if (error) {
+    console.error("Error inserting data:", error);
+  } else {
+    console.log("Embedding and storing complete!", data);
+  }
 }
 main(content);

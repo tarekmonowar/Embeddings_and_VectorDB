@@ -1,24 +1,29 @@
 import "dotenv/config";
 import OpenAI from "openai";
+import { createClient } from "@supabase/supabase-js";
 
-/** Ensure the OpenAI API key is available and correctly configured */
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error("OpenAI API key is missing or invalid.");
-}
-
-if (!process.env.AI_URL) {
-  throw new Error("OpenAI API base URL is missing or invalid.");
-}
-
-const isSupportedHost = /openai\.azure\.com|api\.openai\.com/i.test(
-  process.env.AI_URL,
-);
-if (!isSupportedHost) {
-  throw new Error("AI_URL must be an Azure OpenAI or OpenAI endpoint.");
+// env check
+const requiredEnvVars = [
+  "OPENAI_API_KEY",
+  "AI_URL",
+  "AI_MODEL",
+  "SUPABASE_URL",
+  "SUPABASE_API_KEY",
+];
+for (const varName of requiredEnvVars) {
+  if (!process.env[varName]) {
+    throw new Error(`Missing required environment variable: ${varName}`);
+  }
 }
 
 /** OpenAI config */
-export default new OpenAI({
+export const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: process.env.AI_URL,
 });
+
+/** Supabase config */
+export const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_API_KEY,
+);
