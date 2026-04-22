@@ -1,7 +1,7 @@
 import { openai, supabase } from "./config.js";
 
 // User query about content in the database
-const query = "Decoding orca calls";
+const query = "Something peaceful and relaxing";
 
 /*
   Create an embedding from the user input and return a 
@@ -21,7 +21,7 @@ async function main(input) {
   const { data } = await supabase.rpc("match_documents", {
     query_embedding: embedding,
     match_threshold: 0.1, // ৫০% এর বেশি মিল থাকলে রেজাল্ট দেখাবে
-    match_count: 3, // সেরা ৫টি রেজাল্ট দেখাবে
+    match_count: 1, // সেরা ৫টি রেজাল্ট দেখাবে
   });
   // console.log(data);
   console.log(data[0].content, data[0].similarity);
