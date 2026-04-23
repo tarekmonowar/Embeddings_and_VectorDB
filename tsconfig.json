@@ -4,6 +4,7 @@
     "module": "ES2020",
     "moduleResolution": "bundler",
     "esModuleInterop": true,
+    "types": ["node"],
     "allowImportingTsExtensions": false,
     "allowJs": true,
     "outDir": "./dist",
@@ -17,11 +18,12 @@
     "strictBindCallApply": false,
     "strictPropertyInitialization": false,
     "noImplicitThis": false,
-    "alwaysStrict": false,
+    "ignoreDeprecations": "6.0",
 
     // Skip type checking entirely
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "noEmitOnError": false,
 
     // Suppress specific errors
     "noUnusedLocals": false,

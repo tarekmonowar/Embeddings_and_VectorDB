@@ -55,7 +55,7 @@ async function getChatCompletion(text, query) {
 
   const response = await openai.chat.completions.create({
     model: process.env.OPENAI_MODEL,
-    messages: chatMessages,
+    messages: chatMessages as any,
     temperature: 0.5,
     frequency_penalty: 0.5,
   });
