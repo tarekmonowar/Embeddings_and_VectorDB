@@ -22,7 +22,7 @@ export const openai = new OpenAI({
   baseURL: process.env.AI_URL,
 });
 
-/** Supabase config */
+/** Supabase config for database access */
 export const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_API_KEY,
